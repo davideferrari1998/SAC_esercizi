@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chat Application</title>
+        <h1>{{room}}</h1>
+    </head>
+    <body>
+        {% for x in listmsg %}
+            <div>
+                <p>
+                    <strong>
+                        {% if x['from']=='anonimo' %}
+                            Anonimo: 
+                        {% else %}
+                            {{x['from']}}: 
+                        {% endif %}
+                    </strong>
+                    {{x['msg']}}
+                </p>
+            </div>
+        {% endfor %}
+        <div>
+            <p>
+                <form action="/form">
+                    <label for="chat">ChatID:</label><br>
+                    <input type="text" id="chat" name="chat" required><br>
+                    <label for="usern">User:</label><br>
+                    <input type="text" id="usern" name="usern"><br>
+                    <label for="messagio">Testo:</label><br>
+                    <input type="text" id="messaggio" name="messaggio" required><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </p>
+        </div>
+    </body>
+</html>
