@@ -1,0 +1,42 @@
+<html>
+    <head><title>Search Game</title></head>
+    <body>
+        {% if retval %}
+        <div>
+            <p><b>code</b>: {{retval}}</p>
+            <ul>
+                <li>
+                    Title: {{x['title']}}
+                </li>
+                <li>
+                    Year: {{x['year']}}
+                </li>
+                <li>
+                    Console: {{x['console']}}
+                </li>
+                <li>
+                    Price: {{x['price']}}
+                </li>
+            </ul>
+        </div>
+        {%endif%}
+
+        {% if error %}
+        <div>
+            <p style="color:red">{{error}}</p>
+        </div>
+        {%endif%}
+
+        <form method="POST" action="{{url_for('search_game')}}">
+            {{form.userId.label}}:
+            {{form.userId}}
+            {{form.gameId.label}}:
+            {{form.gameId}}
+            {{form.submit}}
+        </form>
+
+        <div>
+            <a href="{{url_for('main_page')}}">Back to index</a>
+        </div>
+    </body>
+</html>

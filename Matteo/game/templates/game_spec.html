@@ -1,0 +1,18 @@
+<html>
+    <head><title>Videogame Spec</title></head>
+    <body>
+        {% if game %}
+        <p>
+            <ul>
+                <li>Title: {{game['title']}}</li>
+                <li>Console: {{game['console']}}</li>
+                <li>Year: {{game['year']}}</li>
+                <li>Price: {{game['price']}}</li>
+            </ul>
+        </p>
+        {% endif %}
+        <div>
+            <a href="{{url_for('main_page')}}">Back to index</a>
+        </div>
+    </body>
+</html>

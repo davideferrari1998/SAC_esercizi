@@ -1,0 +1,5 @@
+dispatch:
+  - url: "game-market-app.nw.r.appspot.com/"
+    service: default
+  - url: "*/api/*"
+    service: api

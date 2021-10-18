@@ -1,0 +1,36 @@
+<html>
+    <head><title>Insert Game</title></head>
+    <body>
+        {% if retval %}
+        <div>
+            <p><b>code</b>: {{retval}}</p>
+        </div>
+        {%endif%}
+
+        {% if error %}
+        <div>
+            <p style="color:red">{{error}}</p>
+        </div>
+        {%endif%}
+
+        <form method="POST" action="{{url_for('insert_game')}}">
+            {{form.userId.label}}:
+            {{form.userId}}
+            {{form.gameId.label}}:
+            {{form.gameId}}
+            {{form.title.label}}:
+            {{form.title}}
+            {{form.year.label}}:
+            {{form.year}}
+            {{form.console.label}}:
+            {{form.console}}
+            {{form.price.label}}:
+            {{form.price}}
+            {{form.submit}}
+        </form>
+
+        <div>
+            <a href="{{url_for('main_page')}}">Back to index</a>
+        </div>
+    </body>
+</html>
