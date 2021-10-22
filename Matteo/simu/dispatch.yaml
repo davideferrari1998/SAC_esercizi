@@ -1,0 +1,5 @@
+dispatch:
+  - url: "simulazione-matteo.nw.r.appspot.com/"
+    service: default
+  - url: "*/api/*"
+    service: api

@@ -1,0 +1,32 @@
+<html>
+    <head><title>Simulazione</title></head>
+    <body>
+        {% if error %}
+        <div>
+            <p style="color:red">{{error}}</p>
+        </div>
+        {%endif%}
+
+        <h2>Itinerari: </h2>
+        {% if list1 is not none %}
+        {% for x in list1 %}
+        <ul>
+            <li>{{x}}</li>
+        </ul>
+        {% endfor %}
+        {% endif %}
+        <h2>Amici di itinerario: </h2>
+        {% if list2 is not none %}
+        {% for y in list2 %}
+        <ul>
+            <li>{{y}}</li>
+        </ul>
+        {% endfor %}
+        {% endif %}
+        <form method="POST" action="{{url_for('main_page')}}">
+            <div>{{ form.userId.label }}: {{ form.userId }}</div>
+            <div>{{ form.date.label }}: {{ form.date }}</div>
+            <div>{{ form.submit }}</div>
+        </form>
+    </body>
+</html>
