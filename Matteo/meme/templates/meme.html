@@ -1,0 +1,13 @@
+<html>
+    <head><title>Meme</title></head>
+    <body>
+        <h2>Memes: </h2>
+        {% if memes is not none %}
+        {% for x in memes %}
+        <ul>
+            <li><a href="/view_spec/{{tag}}/{{x['title']}}">{{x['title']}}</a></li>
+        </ul>
+        {% endfor %}
+        {% endif %}
+    </body>
+</html>

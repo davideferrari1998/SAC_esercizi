@@ -1,0 +1,103 @@
+swagger: "2.0"
+
+info:
+  version: "1.0"
+  title: "MyMeme Selection"
+  description: "A personal website for memes and stuffs"
+
+host: "exam-15-06-20.appspot.com"
+basePath: "/api/v1"
+
+schemes:
+  - https
+
+paths:
+  /meme/{meme-id}:
+    parameters:
+      - name: meme-id
+        in: path
+        required: true
+        description: "Identifier of the meme"
+        type: string
+        format: uuid
+    post:
+      description: "Insert a new meme"
+      operationId: "PostMeme"
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: MemeInfo
+          required: True
+          description: "Meme details"
+          schema:
+            $ref: "#/definitions/MemeInfo"
+      responses:
+        201:
+          description: "Success."
+        400:
+          description: "Generic error."
+        409:
+          description: "Conflict. The user has already inserted a similar meme."
+    get:
+      description: "Get infos of the meme"
+      operationId: "GetMeme"
+      responses:
+        200:
+          description: "Return the Meme Infos"
+          schema:
+            $ref: '#/definitions/MemeInfo'
+        404:
+          description: "Generic error."
+  /memesByTag/{tag}:
+    parameters:
+      - name: tag
+        in: path
+        required: true
+        description: "Tag"
+        type: string
+        minLength: 3
+        maxLength: 30
+    get:
+      description: "Get memes by tag"
+      operationId: "GetMemesTag"
+      responses:
+        202:
+          description: "Return the List"
+          schema:
+            $ref: '#/definitions/MemeList'
+        406:
+          description: "Generic error."
+
+
+definitions:
+  MemeInfo:
+    type: object
+    properties:
+      title:
+        type: string
+        maxLength: 100
+      link:
+        type: string
+        format: url
+      media:
+        type: string
+        enum: ["image", "video"]
+      tags:
+        type: array
+        minimum: 2
+        items:
+          type: string
+          minLength: 3
+          maxLength: 30
+    example:
+        title: "Baby Yoda at its finest"
+        link: "https://compass-media.vogue.it/photos/5ddd36f23c078100083ec49d/master/w_1080,c_limit/millerscrossingri_75266915_957390681307624_8960797105652498521_n.jpg"
+        media: "image"
+        tags: ["baby yoda", "adult child"]
+  MemeList:
+    type: array
+    maxItems: 5
+    items: 
+      $ref: '#/definitions/MemeInfo'
+  

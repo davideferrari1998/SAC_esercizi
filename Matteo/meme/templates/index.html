@@ -1,0 +1,13 @@
+<html>
+    <head><title>Exam</title></head>
+    <body>
+        <h2>Tags: </h2>
+        {% if tags is not none %}
+        {% for x in tags %}
+        <ul>
+            <li><a href="/view/{{x}}">{{x}}</a></li>
+        </ul>
+        {% endfor %}
+        {% endif %}
+    </body>
+</html>
