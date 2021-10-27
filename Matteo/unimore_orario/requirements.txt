@@ -1,5 +1,0 @@
-flask
-flask-restful
-google-cloud-firestore
-gunicorn
-wtforms
