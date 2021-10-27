@@ -1,0 +1,5 @@
+dispatch:
+  - url: "exam-16-09-21.appspot.com/"
+    service: default
+  - url: "*/api/*"
+    service: api
