@@ -1,0 +1,5 @@
+dispatch:
+  - url: "travel-2510.appspot.com/"
+    service: default
+  - url: "*/api/*"
+    service: api

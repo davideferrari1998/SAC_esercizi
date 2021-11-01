@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Search User's travels</title>
+    </head>
+    <body>
+
+        {% if travels == [] %}
+            <div>
+                <div>
+                    <p style="color: red">No travels found for this user!</p>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if error %}
+        <div>
+            <div>
+                <p style="color: red">{{error}}</p>
+            </div>
+        </div>
+        {% endif %}
+
+        {% for t in travels %}
+        <div>
+            <p>
+                <ul>
+                    <li>DATE: {{t['date']}}</li>
+                    <li>FROM: {{t['from']}}</li>
+                    <li>TO: {{t['to']}}</li>
+                </ul>
+            </p>
+        </div>
+        {% endfor %}
+        
+        <form method="POST" action="{{url_for('search_function')}}">
+            {{form.user_id.label}}:
+            {{form.user_id}}
+            {{form.submit}}
+        </form>
+
+        <div>
+            <a href="{{url_for('main_page')}}">Back to index</a>
+        </div>
+    </body>
+</html>

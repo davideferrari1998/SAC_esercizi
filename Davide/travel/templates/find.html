@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Find User's friends</title>
+    </head>
+    <body>
+        {% for user in users %}
+        <div>
+        
+            <li style="color: green">{{user}}</li>
+            
+        </div>
+        {% endfor %}
+
+        {% if msg %}
+            <div>
+                
+                <p style="color: orange">{{msg}}</p>
+                
+            </div>
+        {% endif %}
+
+        {% if error %}
+        <div>
+            
+            <p style="color: red">{{error}}</p>
+            
+        </div>
+        {% endif %}
+
+        
+        <form method="POST" action="{{url_for('find_function')}}">
+            {{form.user_id.label}}:
+            {{form.user_id}}
+            {{form.submit}}
+        </form>
+
+        <div>
+            <a href="{{url_for('main_page')}}">Back to index</a>
+        </div>
+    </body>
+</html>
