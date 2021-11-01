@@ -1,0 +1,5 @@
+dispatch:
+  - url: "aule-3110.appspot.com/"
+    service: default
+  - url: "*/api/*"
+    service: api

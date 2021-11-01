@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Seats Application</title>
+    </head>
+    <body>
+
+        {% for s in students %}
+        <div>
+            <p>
+                <ul>
+                    <li>{{s['id']}} : {{s['seat']}}</li>
+                </ul>
+            </p>
+        </div>
+        {% endfor %}
+
+
+        {% if error %}
+        <div>
+            <div>
+                <p style="color: red">{{error}}</p>
+            </div>
+        </div>
+        {% endif %}
+
+        
+        <form method="POST" action="{{url_for('main_page')}}">
+            {{form.course.label}}
+            {{form.course}}
+            <br />
+            {{form.time_slot.label}}
+            {{form.time_slot}}
+            <br />
+            {{form.submit}}
+        </form>
+
+    </body>
+</html>
