@@ -1,0 +1,27 @@
+<html>
+    <head><title>Inserisci titolo</title></head>
+    <body>
+        {% if error %}
+        <div>
+            <p style="color:red">{{error}}</p>
+        </div>
+        {%endif%}
+
+        <h2>Inserisci titolo paragrafo per lista: </h2>
+        {% if lista is not none %}
+        {% for x in lista %}
+        <ul>
+            <li>{{x["id"]}}: {{x['posto']}}</li>
+        </ul>
+        {% endfor %}
+        {% endif %}
+        
+        <form method="POST" action="{{url_for('main_page')}}">
+            <div>{{ form.course_id.label }}: {{ form.course_id }}</div>
+            <div>{{ form.fascia_oraria.label }}: {{ form.fascia_oraria }}</div>
+            <div>{{ form.submit }}</div>
+        </form>
+
+        <a href="{{url_for('main_page')}}">Back to index</a>
+    </body>
+</html>
