@@ -1,0 +1,34 @@
+<html>
+    <head><title>Exam Semine</title></head>
+    <body>
+        <h2>Calendario Semine:</h2>
+        {% if semine is not none %}
+        {% for semina in semine %}
+        
+        {% if semina["color"] == 1 %}
+        <div>
+            <p style="color:grey">{{semina["date"]}}</p>
+        </div>
+        {% endif %}
+        {% if semina["color"] == 2 %}
+        <div>
+            <p style="color:cyan">{{semina["date"]}}</p>
+        </div>
+        {% endif %}
+        {% if semina["color"] == 3 %}
+        <div>
+            <p style="color:navy">{{semina["date"]}}</p>
+        </div>
+        {% endif %}
+
+            
+        <div>Name: {{semina["name"]}}     Germinazione: {{semina["germinazione"]}}  Crescita: {{semina["crescita"]}}</div>
+
+        
+        
+        
+        
+        {% endfor %}
+        {% endif %}
+    </body>
+</html>

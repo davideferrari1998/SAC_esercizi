@@ -1,0 +1,5 @@
+dispatch:
+  - url: "garden-matteo.appspot.com/"
+    service: default
+  - url: "*/api/*"
+    service: api
