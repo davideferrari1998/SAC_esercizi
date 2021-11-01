@@ -1,0 +1,9 @@
+runtime: python39
+service: default
+
+entrypoint: gunicorn api:app
+
+handlers:
+  - url: /.*
+    secure: always
+    script: auto
