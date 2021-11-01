@@ -1,0 +1,119 @@
+swagger: "2.0"
+
+info:
+  version: "1.0"
+  title: "Videogame Marketplace"
+  description: "A marketplace for videogames"
+
+host: "videogame-2210.appspot.com"
+basePath: "/api/v1"
+
+schemes:
+  - https
+
+paths:
+  /game/{user-id}/{game-id}:
+    parameters:
+      - name: user-id
+        in: path
+        required: true
+        description: "The uuid of the user"
+        type: string
+        format: uuid
+      - name: game-id
+        in: path
+        required: true
+        description: "The uuid of the videogame"
+        type: string
+        format: uuid
+    post:
+      description: "Insert the game on the marketplace"
+      operationId: "PostGame"
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: GameInfo
+          required: True
+          description: "Game details"
+          schema:
+            $ref: "#/definitions/GameInfo"
+      responses:
+        201:
+          description: "Success."
+        400:
+          description: "Generic error."
+        409:
+          description: "Conflict. The user has already inserted a game with the same id."
+    get:
+      description: "Get infos of the game"
+      operationId: "GetGame"
+      responses:
+        200:
+          description: "Return the Game Infos"
+          schema:
+            $ref: '#/definitions/GameInfo'
+        404:
+          description: "Generic error."
+  /game/{user-id}/{game-id}/update:
+    parameters:
+      - name: user-id
+        in: path
+        required: true
+        description: "The uuid of the user"
+        type: string
+        format: uuid
+      - name: game-id
+        in: path
+        required: true
+        description: "The uuid of the videogame"
+        type: string
+        format: uuid
+    post:
+      description: "Insert new price of game"
+      operationId: "PostUpdate"
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: newprice
+          required: True
+          description: "New game price"
+          schema:
+            type: number
+            format: float
+            minimum: 0.01
+            example:
+              newPrice: 20
+      responses:
+        202:
+          description: "Success."
+        405:
+          description: "Generic error."
+
+
+definitions:
+  GameInfo:
+    type: object
+    properties:
+      title:
+        type: string
+        maxLength: 100
+      year:
+        type: number
+        format: integer
+        minimum: 2010
+        maximum: 2020
+      console:
+        type: string
+        enum: ['ps4', 'xbox1', 'switch']
+      price:
+        type: number
+        format: float
+        minimum: 0.01
+    example:
+        title: 'Star Wars Jedi: Fallen Order'
+        year: 2019
+        console: 'ps4'
+        price: '35.00'
+      
