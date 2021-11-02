@@ -1,0 +1,36 @@
+<html>
+    <head><title>Semine Application</title></head>
+    <body>
+
+        <h2>Plant list: </h2>
+        
+        {% for p in semine %}
+        <ul>
+            <li>NAME: {{p['name']}}</li>
+
+            {% if p['color'] == 1 %}
+            
+            <li style="color:grey">DATE: {{p['date']}}</li>
+            
+            {%endif%}
+
+            {% if p['color'] == 2 %}
+            
+            <li style="color:cyan">DATE: {{p['date']}}</li>
+            
+            {%endif%}
+
+            {% if p['color'] == 3 %}
+            
+            <li style="color:blue">DATE: {{p['date']}}</li>
+            
+            {%endif%}
+            
+            <li>full-growth: {{p['full-growth']}}</li>
+            <li>sprout-time: {{p['sprout-time']}}</li>
+
+        </ul>
+        {% endfor %}
+        
+    </body>
+</html>
